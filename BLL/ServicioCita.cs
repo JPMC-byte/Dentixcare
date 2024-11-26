@@ -92,12 +92,14 @@ namespace BLL
             }
             return nuevoCodigo;
         }
+
         public string actualizarRazon(Cita cita, string RazonCita)
         {
             Cita CitaAModificar = obtenerPorCodigo(cita.Codigo);
             CitaAModificar.Razon_Cita = RazonCita;
             return reposCita.modificarDato(CitaAModificar);
         }
+
         public string actualizarAtendida(Cita cita, string CodigoOrtodoncista, string estado)
         {
             Cita CitaAModificar = obtenerPorCodigo(cita.Codigo);

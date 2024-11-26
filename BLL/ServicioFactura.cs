@@ -36,6 +36,7 @@ namespace BLL
         //    facturaAModificar.Estado = estado;
         //    return reposFactura.actualizarDato(facturaAModificar);
         //}
+
         public string actualizarEstado(Factura factura, string estado)
         {
             Factura facturaAModificar = obtenerPorCodigo(factura.ID_Factura);
@@ -52,7 +53,6 @@ namespace BLL
             }
             return reposFactura.actualizarDato(facturaAModificar);
         }
-
 
         public string sumarMonto(Factura factura, double monto)
         {

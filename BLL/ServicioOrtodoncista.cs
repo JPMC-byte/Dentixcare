@@ -18,10 +18,12 @@ namespace BLL
             //RepsOrto = new RepositorioOrtodoncista(Config.FILENAME_ORTODONCISTA);
             RepsOrto = new DBOrtodoncista();
         }
+
         public string guardar(Ortodoncista value)
         {
             return RepsOrto.guardarDato(value);
         }
+
         public List<Ortodoncista> obtenerTodos()
         {
             return RepsOrto.obtenerTodos();

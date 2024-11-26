@@ -111,23 +111,15 @@ namespace DAL
 
             try
             {
-                AbrirConexion(); // Abre la conexión a la base de datos.
+                AbrirConexion(); 
 
                 using (OracleCommand command = new OracleCommand(query, conexion))
                 {
                     command.Parameters.Add(new OracleParameter("NuevaContrasena", nuevaContrasena));
                     command.Parameters.Add(new OracleParameter("Cedula", cedula));
-
-                    int filasAfectadas = command.ExecuteNonQuery();
-
-                    if (filasAfectadas > 0)
-                    {
-                        return "Contraseña actualizada exitosamente";
-                    }
-                    else
-                    {
-                        return "Error: No se encontró un paciente con esa cédula.";
-                    }
+                    
+                    command.ExecuteNonQuery();
+                    return "Contraseña actualizada exitosamente";
                 }
             }
             catch (Exception ex)
@@ -136,7 +128,7 @@ namespace DAL
             }
             finally
             {
-                CerrarConexion(); // Cierra la conexión a la base de datos.
+                CerrarConexion(); 
             }
         }
 
