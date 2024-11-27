@@ -86,7 +86,7 @@ namespace DAL
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -101,6 +101,7 @@ namespace DAL
         {
             return obtenerTodos().Find(x => x.Codigo == codigo);
         }
+
         private void ConsultorioCreado()
         {
             string codigo = "P101";
