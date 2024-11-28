@@ -41,7 +41,7 @@ namespace GUI
 
         private void btnAntecedentes_Click(object sender, EventArgs e)
         {
-            if (!verificar()) { return; }
+            if (!verificar() || !validarAntecedentes()) { return; }
             mostrarAntecedentes();
         }
 
@@ -96,6 +96,17 @@ namespace GUI
                 MessageBox.Show("Por favor, seleccione un paciente de la lista para realizar dicha acción", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+        }
+
+        bool validarAntecedentes()
+        {
+            Paciente paciente = pacienteSeleccionado();
+            if (!vali.validarAntedecentes(paciente))
+            {
+                MessageBox.Show("El paciente no presenta antecedentes previos registrados", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         void abrirInformacion()

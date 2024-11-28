@@ -20,6 +20,7 @@ namespace GUI
         Persona usuarioActual = new Paciente();
         ServicioFactura servisFactu = new ServicioFactura();
         Validaciones vali = new Validaciones();
+
         public FrmGestionFactura(Persona persona)
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace GUI
 
         private void btnVerPagos_Click(object sender, EventArgs e)
         {
-            if (!verificar()) { return; }
+            if (!verificar() || !validarPagos()) { return; }
             abrirGestionPagos();
         }
 
@@ -95,6 +96,17 @@ namespace GUI
                 MessageBox.Show("Por favor, seleccione una factura de la lista para realizar dicha acción", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+        }
+
+        bool validarPagos()
+        {
+            Factura factura = facturaSeleccionada();
+            if (!vali.validarPagos(factura))
+            {
+                MessageBox.Show("La factura seleccionada no presenta pagos previos registrados", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         public Factura facturaSeleccionada()

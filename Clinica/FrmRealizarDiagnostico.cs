@@ -21,6 +21,7 @@ namespace GUI
         Persona pacienteActual;
         Cita citaActual;
         ServicioDiagnostico servisDiag = new ServicioDiagnostico();
+        ServicioCita servicioCita = new ServicioCita();
         public FrmRealizarDiagnostico(Cita cita, Persona paciente)
         {
             InitializeComponent();
@@ -31,50 +32,60 @@ namespace GUI
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
         private void FrmRealizarDiagnostico_Load(object sender, EventArgs e)
         {
-            CargarDatos(citaActual, pacienteActual);
+            cargarDatos(citaActual, pacienteActual);
         }
+
         private void btnRegistrado_Click(object sender, EventArgs e)
         {
-            if (!Verificar())
+            if (!verificar())
             {
                 return;
             }
-            Registrar();
+            registrar();
         }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             cerrar();
         }
+
         private void BtnMinimizar_Click(object sender, EventArgs e)
         {
-            Minimizar();
+            minimizar();
         }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            Limpiar();
+            limpiar();
         }
+
         private void txtDescripcionDiag_Enter(object sender, EventArgs e)
         {
-            EventoEntrar();
+            eventoEntrar();
         }
+
         private void txtDescripcionDiag_Leave(object sender, EventArgs e)
         {
-            EventoSalir();
+            eventoSalir();
         }
+
         private void FrmRealizarDiagnostico_MouseDown(object sender, MouseEventArgs e)
         {
-            moverMouse();
+            moverVentana();
         }
-        private void CargarDatos(Cita cita, Persona paciente)
+
+        private void cargarDatos(Cita cita, Persona paciente)
         {
             txtCodigo.Text = servisDiag.generarCodigo();
             txtFecha.Text = DateTime.Today.Date.ToString("dd/MM/yyyy");
             txtCodigoCita.Text = cita.Codigo;
             txtCedula.Text = paciente.Cedula;
         }
-        public void Registrar()
+
+        public void registrar()
         {
             Diagnostico diagnostico = new Diagnostico();
             diagnostico.Codigo = txtCodigo.Text;
@@ -83,10 +94,17 @@ namespace GUI
             diagnostico.CedulaPaciente = pacienteActual.Cedula;
             diagnostico.Descripcion = txtDescripcionDiag.Text;
             servisDiag.guardar(diagnostico);
+            actualizarEstadoCita();
             MessageBox.Show("Proceso de registro exitoso");
-            Limpiar();
+            limpiar();
         }
-        bool Verificar()
+
+        public void actualizarEstadoCita()
+        {
+            servicioCita.actualizarEstado(citaActual, "Finalizada");
+        }
+
+        bool verificar()
         {
             if (txtDescripcionDiag.Text == "DESCRIPCION")
             {
@@ -95,15 +113,18 @@ namespace GUI
             }
             return true;
         }
+
         void cerrar()
         {
             this.Close();
         }
-        private void Limpiar()
+
+        private void limpiar()
         {
-            BaseTextbox(txtDescripcionDiag, "DESCRIPCION");
+            baseTextbox(txtDescripcionDiag, "DESCRIPCION");
         }
-        void EventoEntrar()
+
+        void eventoEntrar()
         {
             if (txtDescripcionDiag.Text == "DESCRIPCION")
             {
@@ -111,7 +132,8 @@ namespace GUI
                 txtDescripcionDiag.ForeColor = Color.Black;
             }
         }
-        void EventoSalir()
+
+        void eventoSalir()
         {
             if (txtDescripcionDiag.Text == "")
             {
@@ -119,16 +141,19 @@ namespace GUI
                 txtDescripcionDiag.ForeColor = Color.DimGray;
             }
         }
-        void moverMouse()
+
+        void moverVentana()
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        void Minimizar()
+
+        void minimizar()
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        void BaseTextbox(TextBox textBox, string nombre)
+
+        void baseTextbox(TextBox textBox, string nombre)
         {
             textBox.Text = nombre;
             textBox.ForeColor = Color.DimGray;
@@ -138,6 +163,7 @@ namespace GUI
         {
             abrirManualUsuario(12);
         }
+
         void abrirManualUsuario(int pagina)
         {
             string tempPath = Path.GetTempPath();

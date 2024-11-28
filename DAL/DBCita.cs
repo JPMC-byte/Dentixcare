@@ -103,18 +103,22 @@ namespace DAL
         {
             return obtenerTodos().FirstOrDefault<Cita>(x => x.Codigo == codigo);
         }
+
         public Cita obtenerPorCedula(string codigo)
         {
             return obtenerTodos().FirstOrDefault<Cita>(x => x.CodigoPaciente == codigo);
         }
+
         public List<Cita> cargarPorCodigo(string codigo)
         {
             return obtenerTodos().Where(cita => cita.CodigoPaciente == codigo).ToList();
         }
+
         public List<Cita> cargarPorEstado(string estado)
         {
             return obtenerTodos().Where(cita => cita.Estado == estado).ToList();
         }
+
         public List<Cita> cargarPorFiltrosGui(string estado, string cedulaPaciente)
         {
             List<Cita> Citas = obtenerTodos();
@@ -122,6 +126,7 @@ namespace DAL
             Citas = Citas.Where(cita => cita.Estado == estado).ToList();
             return Citas;
         }
+
         public string modificarDato(Cita cita)
         {
             string horaCita = cita.Hora_Cita.ToString(@"hh\:mm\:ss");
@@ -161,6 +166,7 @@ namespace DAL
                 CerrarConexion();
             }
         }
+
         public string eliminarDato(string codigo)
         {
             string query = "DELETE FROM CITA WHERE ID_CITA = :Codigo";

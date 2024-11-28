@@ -20,6 +20,7 @@ namespace GUI
     public partial class FrmPaciente : Form
     {
         ServicioConsultorio servisConsul = new ServicioConsultorio();
+        Validaciones vali = new Validaciones();
         Persona usuarioActual = new Paciente();
         Form formularioActivo = null;
         public FrmPaciente(Persona persona)
@@ -100,6 +101,7 @@ namespace GUI
 
         private void btnAntecedentes_Click(object sender, EventArgs e)
         {
+            if (!validarAntecedentes()) { return; }
             abrirFormulario(new FrmGestionAntecedentes(usuarioActual));
             ocultarSubmenu();
         }
@@ -184,6 +186,16 @@ namespace GUI
             {
                 submenu.Visible = false;
             }
+        }
+
+        bool validarAntecedentes()
+        {
+            if (!vali.validarAntedecentes(usuarioActual))
+            {
+                MessageBox.Show("El paciente no presenta antecedentes previos registrados", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         private void abrirFormulario(Form FormularioHijo)

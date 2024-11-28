@@ -24,6 +24,7 @@ namespace GUI
         ServicioCita servisCita = new ServicioCita();
         ServicioPaciente servisPaciente = new ServicioPaciente();
         Validaciones vali = new Validaciones();
+
         public FrmGestionAntecedentes(Persona persona)
         {
             InitializeComponent();
@@ -63,7 +64,7 @@ namespace GUI
 
         private void btnTratamientosRelacion_Click(object sender, EventArgs e)
         {
-            if (!verificar()) { return; }
+            if (!verificar() || !validarTratamientos()) { return; }
             verTratamientosRelacionados();
         }
 
@@ -177,6 +178,17 @@ namespace GUI
                 MessageBox.Show("Por favor, seleccione un diagnostico de la lista para realizar dicha acción", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+        }
+
+        bool validarTratamientos()
+        {
+            Diagnostico diagnostico = diagnosticoSeleccionado();
+            if (!vali.validarTratamientosPerDiagnostico(diagnostico))
+            {
+                MessageBox.Show("El diagnostico no presenta tratamientos previos registrados", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
         public bool validarFiltroFecha(bool activo, DateTime fecha)

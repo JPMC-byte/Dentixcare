@@ -26,47 +26,61 @@ namespace GUI
             facturaActual = factura;
             usuarioActual = persona;
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        void MoverPestaña()
+
+        private void FrmRealizarPago_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            moverVentana();
         }
+
         private void FrmRealizarPago_Load(object sender, EventArgs e)
         {
-            CargarFecha();
+            cargarFecha();
         }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             cerrar();
         }
+
         private void BtnMinimizar_Click(object sender, EventArgs e)
         {
             Minimizar();
         }
-        private void FrmRealizarPago_MouseDown(object sender, MouseEventArgs e)
+
+        private void btnRealizarPago_Click(object sender, EventArgs e)
         {
-            MoverPestaña();
+            if (!verificar() || !validarMonto() || !validarMetodoPago()) { return; }
+            if (Confirmar())
+            {
+                realizarPago();
+            }
         }
-        void CargarFecha()
+
+        void cargarFecha()
         {
             txtFecha.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
         }
+
         void cerrar()
         {
             this.Close();
         }
+
         void Minimizar()
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
         bool Confirmar()
         {
             return MessageBox.Show("¿Está seguro que desea realizar dicho movimiento?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
+
         bool validarMetodoPago()
         {
             if (!vali.validarMetodoPago(CBMetodoPago.Text))
@@ -76,6 +90,7 @@ namespace GUI
             }
             return true;
         }
+
         bool validarMonto()
         {
             double monto = Convert.ToDouble(txtMonto.Text);
@@ -86,7 +101,8 @@ namespace GUI
             }
             return true;
         }
-        bool ValidarNumeros(KeyPressEventArgs e)
+
+        bool validarNumeros(KeyPressEventArgs e)
         {
             if (!vali.validarNumeros(e))
             {
@@ -94,7 +110,8 @@ namespace GUI
             }
             return true;
         }
-        bool Verificar()
+
+        bool verificar()
         {
             if (txtMonto.Text == "MONTO")
             {
@@ -104,14 +121,6 @@ namespace GUI
             return true;
         }
 
-        private void btnRealizarPago_Click(object sender, EventArgs e)
-        {
-            if (!Verificar() || !validarMonto() || !validarMetodoPago() ) { return; }
-            if (Confirmar()) 
-            {
-                realizarPago();
-            }
-        }
         bool validarFacturaPagada()
         {
             if (vali.validarFacturaPagada(facturaActual))
@@ -120,6 +129,13 @@ namespace GUI
             }
             return false;
         }
+
+        void moverVentana()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
         public void realizarPago()
         {
             Pago pago = new Pago();
@@ -130,8 +146,10 @@ namespace GUI
             pago.CodigoFactura = facturaActual.ID_Factura;
             pago.CodigoPaciente = usuarioActual.Cedula;
             servicioPago.guardar(pago);
+
             servisFactu.sumarMontoAPagado(facturaActual, pago.Monto);
             facturaActual = servisFactu.obtenerPorCodigo(facturaActual.ID_Factura);
+
             if (validarFacturaPagada())
             {
                 servisFactu.actualizarEstado(facturaActual, "Finalizada"); 
@@ -139,7 +157,8 @@ namespace GUI
             }
             MessageBox.Show("Proceso de registro exitoso");
         }
-        void EventoEntrarTextbox(TextBox textBox, string nombre)
+
+        void eventoEntrarTextbox(TextBox textBox, string nombre)
         {
             if (textBox.Text == nombre)
             {
@@ -147,7 +166,8 @@ namespace GUI
                 textBox.ForeColor = Color.Black;
             }
         }
-        void EventoDejarTextbox(TextBox textBox, string nombre)
+
+        void eventoDejarTextbox(TextBox textBox, string nombre)
         {
             if (textBox.Text == "")
             {
@@ -155,9 +175,10 @@ namespace GUI
                 textBox.ForeColor = Color.DimGray;
             }
         }
-        private void txtMonto_Enter(object sender, EventArgs e) { EventoEntrarTextbox(txtMonto, "MONTO"); }
-        private void txtMonto_Leave(object sender, EventArgs e) { EventoDejarTextbox(txtMonto, "MONTO"); }
 
-        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e) { if (!ValidarNumeros(e)) e.Handled = true; }
+        private void txtMonto_Enter(object sender, EventArgs e) { eventoEntrarTextbox(txtMonto, "MONTO"); }
+        private void txtMonto_Leave(object sender, EventArgs e) { eventoDejarTextbox(txtMonto, "MONTO"); }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e) { if (!validarNumeros(e)) e.Handled = true; }
     }
 }

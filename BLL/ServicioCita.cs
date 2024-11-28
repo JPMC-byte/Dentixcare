@@ -17,30 +17,37 @@ namespace BLL
             //reposCita = new RepositorioCita(Config.FILENAME_CITA);
             reposCita = new DBCita();
         }
+
         public string guardar(Cita cita)
         {
             return reposCita.guardarDatos(cita);
         }
+
         public List<Cita> obtenerTodos()
         {
             return reposCita.obtenerTodos();
         }
+
         public Cita obtenerPorCodigo(string id) 
         {
             return reposCita.obtenerPorCodigo(id);
         }
+
         public Cita obtenerPorCedula(string id)
         {
             return reposCita.obtenerPorCedula(id);
         }
+
         public List<Cita> cargarPorCodigo(string id)
         {
             return reposCita.cargarPorCodigo(id);
         }
+
         public List<Cita> cargarPorEstado(string Estado)
         {
             return reposCita.cargarPorEstado(Estado);
         }
+
         public List<Cita> cargarPorFiltrosGui(string Estado, string Cedula)
         {
             return reposCita.cargarPorFiltrosGui(Estado, Cedula);
@@ -104,6 +111,13 @@ namespace BLL
         {
             Cita CitaAModificar = obtenerPorCodigo(cita.Codigo);
             CitaAModificar.CodigoOrtodoncista = CodigoOrtodoncista;
+            CitaAModificar.Estado = estado;
+            return reposCita.modificarDato(CitaAModificar);
+        }
+
+        public string actualizarEstado(Cita cita, string estado)
+        {
+            Cita CitaAModificar = obtenerPorCodigo(cita.Codigo);
             CitaAModificar.Estado = estado;
             return reposCita.modificarDato(CitaAModificar);
         }

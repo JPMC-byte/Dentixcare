@@ -18,6 +18,8 @@ namespace BLL
         ServicioCita servicioCita = new ServicioCita();
         ServicioConsultorio servicioConsultorio = new ServicioConsultorio();
         ServicioTratamiento servicioTratamiento = new ServicioTratamiento();
+        ServicioDiagnostico servicioDiagnostico = new ServicioDiagnostico();
+        ServicioPago servicioPago = new ServicioPago();
 
         public Validaciones() { }
 
@@ -237,6 +239,33 @@ namespace BLL
             {
                 return false;
             }
+            return true;
+        }
+
+        public bool validarAntedecentes(Persona persona)
+        {
+            List<Diagnostico> listaDiagnosticos = servicioDiagnostico.cargarPorCedula(persona.Cedula);
+
+            if (listaDiagnosticos.Count == 0 || listaDiagnosticos == null) return false;
+
+            return true;
+        }
+
+        public bool validarTratamientosPerDiagnostico(Diagnostico diagnostico)
+        {
+            List<Tratamiento> listaTratamientos = servicioTratamiento.cargarPorDiagnostico(diagnostico.Codigo);
+
+            if (listaTratamientos.Count == 0 || listaTratamientos == null) return false;
+
+            return true;
+        }
+
+        public bool validarPagos(Factura factura)
+        {
+            List<Pago> listaPagos = servicioPago.cargarPorFactura(factura.ID_Factura);
+
+            if (listaPagos.Count == 0 || listaPagos == null) return false;
+
             return true;
         }
 
