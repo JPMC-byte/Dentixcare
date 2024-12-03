@@ -13,7 +13,7 @@ namespace DAL
         {
             try
             {
-                string query = "INSERT INTO FACTURA (ID_FACTURA, FECHA_EMISION, ESTADO, MONTO_TOTAL, TOTAL_PAGADO, CAMBIO, CEDULA_P) " +
+                string query = "INSERT INTO FACTURA (ID_FACTURA, FECHA_EMISION, ESTADO, MONTO_TOTAL, TOTAL_PAGADO, CAMBIO, CEDULA_PACIENTE) " +
                                "VALUES (:ID_Factura, TO_DATE(:Fecha_Emision, 'DD-MM-YYYY'), :Estado, :Total, :Total_Pagado, :Cambio, :CedulaPaciente)";
                 OracleTransaction transaction = null;
                 AbrirConexion();
@@ -54,7 +54,7 @@ namespace DAL
                 Total = Convert.ToDouble(reader["MONTO_TOTAL"]),
                 Total_Pagado = Convert.ToDouble(reader["TOTAL_PAGADO"]),
                 Cambio = Convert.ToDouble(reader["CAMBIO"]),
-                CedulaPaciente = Convert.ToString(reader["CEDULA_P"]) 
+                CedulaPaciente = Convert.ToString(reader["CEDULA_PACIENTE"]) 
             };
         }
 
@@ -103,7 +103,7 @@ namespace DAL
             try
             {
                 string query = "UPDATE FACTURA SET FECHA_EMISION = TO_DATE(:Fecha_Emision, 'DD-MM-YYYY'), ESTADO = :Estado, " +
-                               "MONTO_TOTAL = :Total, TOTAL_PAGADO = :Total_Pagado, CAMBIO = :Cambio, CEDULA_P = :CedulaPaciente " +
+                               "MONTO_TOTAL = :Total, TOTAL_PAGADO = :Total_Pagado, CAMBIO = :Cambio, CEDULA_PACIENTE = :CedulaPaciente " +
                                "WHERE ID_FACTURA = :ID_Factura";
 
                 AbrirConexion();
