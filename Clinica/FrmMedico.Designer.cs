@@ -47,11 +47,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.PanelDia = new System.Windows.Forms.Panel();
-            this.PanelHijo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.LBFecha = new System.Windows.Forms.Label();
             this.LBHora = new System.Windows.Forms.Label();
+            this.PanelHijo = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contadorDia = new System.Windows.Forms.Timer(this.components);
+            this.btnInformes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PanelSubmenuTratamientos.SuspendLayout();
             this.Panellogo.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel1.Controls.Add(this.btnInformes);
             this.panel1.Controls.Add(this.btnDatosConsultorio);
             this.panel1.Controls.Add(this.btnGestionPaciente);
             this.panel1.Controls.Add(this.btnGestionDiagnostico);
@@ -343,27 +345,6 @@
             this.PanelDia.Size = new System.Drawing.Size(777, 100);
             this.PanelDia.TabIndex = 35;
             // 
-            // PanelHijo
-            // 
-            this.PanelHijo.Controls.Add(this.pictureBox2);
-            this.PanelHijo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelHijo.Location = new System.Drawing.Point(250, 0);
-            this.PanelHijo.Name = "PanelHijo";
-            this.PanelHijo.Size = new System.Drawing.Size(777, 699);
-            this.PanelHijo.TabIndex = 36;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::GUI.Properties.Resources.Fondo;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(777, 699);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
-            // 
             // LBFecha
             // 
             this.LBFecha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -390,10 +371,49 @@
             this.LBHora.TabIndex = 2;
             this.LBHora.Text = "Hora";
             // 
+            // PanelHijo
+            // 
+            this.PanelHijo.Controls.Add(this.pictureBox2);
+            this.PanelHijo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelHijo.Location = new System.Drawing.Point(250, 0);
+            this.PanelHijo.Name = "PanelHijo";
+            this.PanelHijo.Size = new System.Drawing.Size(777, 699);
+            this.PanelHijo.TabIndex = 36;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = global::GUI.Properties.Resources.Fondo;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(777, 699);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            // 
             // contadorDia
             // 
             this.contadorDia.Interval = 1000;
             this.contadorDia.Tick += new System.EventHandler(this.contadorDia_Tick);
+            // 
+            // btnInformes
+            // 
+            this.btnInformes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInformes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInformes.FlatAppearance.BorderSize = 0;
+            this.btnInformes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInformes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInformes.ForeColor = System.Drawing.Color.White;
+            this.btnInformes.Location = new System.Drawing.Point(0, 544);
+            this.btnInformes.Name = "btnInformes";
+            this.btnInformes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInformes.Size = new System.Drawing.Size(250, 41);
+            this.btnInformes.TabIndex = 43;
+            this.btnInformes.Text = "Informes";
+            this.btnInformes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInformes.UseVisualStyleBackColor = false;
+            this.btnInformes.Click += new System.EventHandler(this.btnInformes_Click);
             // 
             // FrmMedico
             // 
@@ -449,5 +469,6 @@
         private System.Windows.Forms.Label LBFecha;
         private System.Windows.Forms.Label LBHora;
         private System.Windows.Forms.Timer contadorDia;
+        private System.Windows.Forms.Button btnInformes;
     }
 }

@@ -17,17 +17,11 @@ namespace GUI
     public partial class FrmContraseña : Form
     {
         FrmRegistrarOrtodoncista frmRegistrarOrtodoncista = new FrmRegistrarOrtodoncista();
-        Form formularioActual;
         
         public FrmContraseña()
         {
             InitializeComponent();
-            //formularioActual = formulario;
         }
-
-        //public FrmContraseña()
-        //{
-        //}
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

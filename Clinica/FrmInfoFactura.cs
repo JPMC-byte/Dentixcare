@@ -32,6 +32,22 @@ namespace GUI
         {
             moverCursor();
         }
+
+        private void BtnMinimizar_Click(object sender, EventArgs e)
+        {
+            minimizar();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            cerrar();
+        }
+
+        private void IconDudas_Click(object sender, EventArgs e)
+        {
+            abrirManualUsuario(10);
+        }
+
         public void cargarDatos(Factura factura)
         {
             txtCodigo.Text = factura.ID_Factura;
@@ -42,32 +58,23 @@ namespace GUI
             txtCambio.Text = factura.Cambio.ToString();
             txtCedulaPaciente.Text = factura.CedulaPaciente;
         }
-        private void BtnMinimizar_Click(object sender, EventArgs e)
-        {
-            Minimizar();
-        }
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            cerrar();
-        }
-        void Minimizar()
+
+        void minimizar()
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
         void cerrar()
         {
             this.Close();
         }
+
         void moverCursor()
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void IconDudas_Click(object sender, EventArgs e)
-        {
-            abrirManualUsuario(10);
-        }
         void abrirManualUsuario(int pagina)
         {
             string tempPath = Path.GetTempPath();

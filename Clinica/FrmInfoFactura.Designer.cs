@@ -39,24 +39,24 @@
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.LBTelefono = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtMontoTotal = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCedulaPaciente = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.IconDudas = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.txtMontoTotal = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.IconDudas = new System.Windows.Forms.PictureBox();
-            this.txtCedulaPaciente = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.IconDudas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IconDudas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCambio
@@ -187,6 +187,84 @@
             this.txtCodigo.TabIndex = 94;
             this.txtCodigo.Text = "CODIGO";
             // 
+            // txtMontoTotal
+            // 
+            this.txtMontoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMontoTotal.Enabled = false;
+            this.txtMontoTotal.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontoTotal.ForeColor = System.Drawing.Color.DimGray;
+            this.txtMontoTotal.Location = new System.Drawing.Point(568, 317);
+            this.txtMontoTotal.Name = "txtMontoTotal";
+            this.txtMontoTotal.Size = new System.Drawing.Size(199, 20);
+            this.txtMontoTotal.TabIndex = 111;
+            this.txtMontoTotal.Text = "MONTO TOTAL";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label3.Location = new System.Drawing.Point(564, 295);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 19);
+            this.label3.TabIndex = 110;
+            this.label3.Text = "Monto total";
+            // 
+            // txtCedulaPaciente
+            // 
+            this.txtCedulaPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCedulaPaciente.Enabled = false;
+            this.txtCedulaPaciente.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCedulaPaciente.ForeColor = System.Drawing.Color.DimGray;
+            this.txtCedulaPaciente.Location = new System.Drawing.Point(422, 562);
+            this.txtCedulaPaciente.Name = "txtCedulaPaciente";
+            this.txtCedulaPaciente.Size = new System.Drawing.Size(199, 20);
+            this.txtCedulaPaciente.TabIndex = 116;
+            this.txtCedulaPaciente.Text = "CEDULA DEL PACIENTE";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label4.Location = new System.Drawing.Point(418, 540);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(157, 19);
+            this.label4.TabIndex = 115;
+            this.label4.Text = "Cedula del paciente";
+            // 
+            // IconDudas
+            // 
+            this.IconDudas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IconDudas.Image = global::GUI.Properties.Resources.IconQuestion;
+            this.IconDudas.Location = new System.Drawing.Point(693, 12);
+            this.IconDudas.Name = "IconDudas";
+            this.IconDudas.Size = new System.Drawing.Size(20, 20);
+            this.IconDudas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.IconDudas.TabIndex = 114;
+            this.IconDudas.TabStop = false;
+            this.IconDudas.Click += new System.EventHandler(this.IconDudas_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::GUI.Properties.Resources.IconDolar;
+            this.pictureBox4.Location = new System.Drawing.Point(275, 452);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(27, 23);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 113;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::GUI.Properties.Resources.IconDolar;
+            this.pictureBox3.Location = new System.Drawing.Point(538, 314);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(27, 23);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 112;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GUI.Properties.Resources.IconDolar;
@@ -211,7 +289,7 @@
             // 
             this.BtnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMinimizar.Image = global::GUI.Properties.Resources.Minimizar;
-            this.BtnMinimizar.Location = new System.Drawing.Point(721, 15);
+            this.BtnMinimizar.Location = new System.Drawing.Point(719, 12);
             this.BtnMinimizar.Name = "BtnMinimizar";
             this.BtnMinimizar.Size = new System.Drawing.Size(20, 20);
             this.BtnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -223,91 +301,13 @@
             // 
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = global::GUI.Properties.Resources.Cerrar;
-            this.btnCerrar.Location = new System.Drawing.Point(747, 15);
+            this.btnCerrar.Location = new System.Drawing.Point(745, 12);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCerrar.TabIndex = 100;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // txtMontoTotal
-            // 
-            this.txtMontoTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMontoTotal.Enabled = false;
-            this.txtMontoTotal.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMontoTotal.ForeColor = System.Drawing.Color.DimGray;
-            this.txtMontoTotal.Location = new System.Drawing.Point(568, 317);
-            this.txtMontoTotal.Name = "txtMontoTotal";
-            this.txtMontoTotal.Size = new System.Drawing.Size(199, 20);
-            this.txtMontoTotal.TabIndex = 111;
-            this.txtMontoTotal.Text = "MONTO TOTAL";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label3.Location = new System.Drawing.Point(564, 295);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 19);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Monto total";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::GUI.Properties.Resources.IconDolar;
-            this.pictureBox3.Location = new System.Drawing.Point(538, 314);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(27, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 112;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::GUI.Properties.Resources.IconDolar;
-            this.pictureBox4.Location = new System.Drawing.Point(275, 452);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(27, 23);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 113;
-            this.pictureBox4.TabStop = false;
-            // 
-            // IconDudas
-            // 
-            this.IconDudas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.IconDudas.Image = global::GUI.Properties.Resources.IconQuestion;
-            this.IconDudas.Location = new System.Drawing.Point(695, 15);
-            this.IconDudas.Name = "IconDudas";
-            this.IconDudas.Size = new System.Drawing.Size(20, 20);
-            this.IconDudas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.IconDudas.TabIndex = 114;
-            this.IconDudas.TabStop = false;
-            this.IconDudas.Click += new System.EventHandler(this.IconDudas_Click);
-            // 
-            // txtCedulaPaciente
-            // 
-            this.txtCedulaPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCedulaPaciente.Enabled = false;
-            this.txtCedulaPaciente.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCedulaPaciente.ForeColor = System.Drawing.Color.DimGray;
-            this.txtCedulaPaciente.Location = new System.Drawing.Point(422, 562);
-            this.txtCedulaPaciente.Name = "txtCedulaPaciente";
-            this.txtCedulaPaciente.Size = new System.Drawing.Size(199, 20);
-            this.txtCedulaPaciente.TabIndex = 116;
-            this.txtCedulaPaciente.Text = "CEDULA DEL PACIENTE";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(418, 540);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 19);
-            this.label4.TabIndex = 115;
-            this.label4.Text = "Cedula del paciente";
             // 
             // FrmInfoFactura
             // 
@@ -342,13 +342,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInfoFactura";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmInfoFactura_MouseDown);
+            ((System.ComponentModel.ISupportInitialize)(this.IconDudas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IconDudas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

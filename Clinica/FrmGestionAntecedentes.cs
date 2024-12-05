@@ -89,11 +89,6 @@ namespace GUI
             actualizarDiagnostico();
         }
 
-        private void btnActualizarRegistro_Click(object sender, EventArgs e)
-        {
-            actualizar();
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             cerrar();
@@ -107,11 +102,23 @@ namespace GUI
         private void CBFiltrarFecha_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorFecha();
+            actualizar();
         }
 
         private void CBFiltrarPorPaciente_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorPaciente();
+            actualizar();
+        }
+
+        private void txtCedulaPaciente_TextChanged(object sender, EventArgs e)
+        {
+            actualizar();
+        }
+
+        private void DTFiltroFecha_ValueChanged(object sender, EventArgs e)
+        {
+            actualizar();
         }
 
         private void cargarDiagnosticos(DateTime? Fecha = null, string cedulaPaciente = null)
@@ -217,10 +224,6 @@ namespace GUI
 
             cargarDiagnosticos(fechaSeleccionada, cedulaPaciente);
 
-            if (CBFiltrarPorPaciente.Checked && !validarFiltroPaciente(CBFiltrarPorPaciente.Checked, cedulaPaciente))
-            {
-                MessageBox.Show("La cédula del paciente no existe en el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             if (CBFiltrarFecha.Checked && !validarFiltroFecha(CBFiltrarFecha.Checked, DTFiltroFecha.Value.Date))
             {
                 MessageBox.Show("No es posible filtrar por una fecha futura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

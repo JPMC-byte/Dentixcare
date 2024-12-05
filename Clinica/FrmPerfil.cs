@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,20 @@ namespace GUI
             InitializeComponent();
             usuarioActual = persona;
         }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        private void FrmPerfil_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.Parent == null)
+            {
+                moverVentana();
+            }
+        }
+
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
             cargarDatos(usuarioActual);
@@ -62,6 +77,12 @@ namespace GUI
         void cerrar()
         {
             this.Close();
+        }
+
+        void moverVentana()
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         void abrirManualUsuario(int pagina)

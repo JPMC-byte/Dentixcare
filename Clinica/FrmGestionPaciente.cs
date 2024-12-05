@@ -45,11 +45,6 @@ namespace GUI
             mostrarAntecedentes();
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            actualizar();
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             cerrar();
@@ -63,8 +58,13 @@ namespace GUI
         private void CBFiltrarPorPaciente_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorPaciente();
+            actualizar();
         }
 
+        private void txtCedulaPaciente_TextChanged(object sender, EventArgs e)
+        {
+            actualizar();
+        }
 
         void cargarPacientes(string cedulaPaciente = null)
         {
@@ -139,10 +139,6 @@ namespace GUI
         {
             string cedulaPaciente = txtCedulaPaciente.Text != "CEDULA DEL PACIENTE" ? txtCedulaPaciente.Text : string.Empty;
             cargarPacientes(cedulaPaciente);
-            if (CBFiltrarPorPaciente.Checked && !validarFiltroPaciente(CBFiltrarPorPaciente.Checked, cedulaPaciente))
-            {
-                MessageBox.Show("La cédula del paciente no existe en el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         } 
 
         void accionarFiltroPorPaciente()

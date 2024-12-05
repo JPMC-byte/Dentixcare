@@ -19,10 +19,6 @@ namespace GUI
 {
     public partial class FrmMedico : Form
     {
-        private bool esMaximizada = false;
-        private Size escalaOriginal;
-        private Point posicionOriginal;
-
         ServicioConsultorio servisConsul = new ServicioConsultorio();
         Persona personaActual = new Ortodoncista();
         Form formularioActivo = null;
@@ -119,6 +115,11 @@ namespace GUI
         private void btnRegistroTratamientos_Click(object sender, EventArgs e)
         {
             verGestionTratamientos();
+        }
+
+        private void btnInformes_Click(object sender, EventArgs e)
+        {
+            verInformes();
         }
 
         private void abrirFormulario(Form formularioHijo)
@@ -232,6 +233,12 @@ namespace GUI
         void verGestionTratamientos()
         {
             abrirFormulario(new FrmGestionTratamientos());
+            ocultarSubmenu();
+        }
+
+        void verInformes()
+        {
+            abrirFormulario(new FrmInformes());
             ocultarSubmenu();
         }
 

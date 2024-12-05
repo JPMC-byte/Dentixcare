@@ -76,7 +76,7 @@
             this.btnResgistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResgistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResgistrar.ForeColor = System.Drawing.Color.Black;
-            this.btnResgistrar.Location = new System.Drawing.Point(303, 384);
+            this.btnResgistrar.Location = new System.Drawing.Point(303, 309);
             this.btnResgistrar.Name = "btnResgistrar";
             this.btnResgistrar.Size = new System.Drawing.Size(289, 41);
             this.btnResgistrar.TabIndex = 2;
@@ -139,7 +139,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei Light", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(377, 327);
+            this.label2.Location = new System.Drawing.Point(377, 358);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 20);
             this.label2.TabIndex = 8;
@@ -150,7 +150,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(404, 347);
+            this.label3.Location = new System.Drawing.Point(404, 378);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 19);
             this.label3.TabIndex = 9;

@@ -22,42 +22,30 @@ namespace GUI
         {
             InitializeComponent();
             usuarioActual = persona;
+        }
+
+        private void FrmGestionCita_Load(object sender, EventArgs e)
+        {
             cargarCitas();
+            CBEstado.SelectedIndex = 0;
         }
 
         private void btnAtender_Click(object sender, EventArgs e)
         {
-            if (!verificar() || !validarEstado())
-            {
-                return;
-            }
-            if (confirmarAsignacion())
-            {
-                atenderCita();
-            }
+            if (!verificar() || !validarEstado("Atender")) { return; }
+            if (confirmarAsignacion()) { atenderCita(); actualizar(); }
         }
 
         private void btnDiagnostico_Click(object sender, EventArgs e)
         {
-            if (!verificar() || !validarEstado(false))
-            {
-                return;
-            }
+            if (!verificar() || !validarEstado("Diagnosticar")) { return; }
             abrirRealizarDiagnostico();
         }
 
         private void btnInformacion_Click(object sender, EventArgs e)
         {
-            if (!verificar())
-            {
-                return;
-            }
+            if (!verificar()) { return; }
             abrirInformacion();
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            actualizar();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -73,11 +61,23 @@ namespace GUI
         private void CBFiltrarEstado_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorEstado();
+            actualizar();
         }
 
         private void CBFiltrarPorPaciente_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorPaciente();
+            actualizar();
+        }
+
+        private void CBEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizar();
+        }
+
+        private void txtCedulaPaciente_TextChanged(object sender, EventArgs e)
+        {
+            actualizar();
         }
 
         private void cargarCitas(string estado = null, string cedulaPaciente = null)
@@ -104,10 +104,6 @@ namespace GUI
             string estadoSeleccionado = CBEstado.SelectedItem?.ToString();
             string cedulaPaciente = txtCedulaPaciente.Text != "CEDULA DEL PACIENTE" ? txtCedulaPaciente.Text : string.Empty;
             cargarCitas(estadoSeleccionado, cedulaPaciente);
-            if (CBFiltrarPorPaciente.Checked && !validarFiltroPaciente(CBFiltrarPorPaciente.Checked, cedulaPaciente))
-            {
-                MessageBox.Show("La cédula del paciente no existe en el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         public Paciente pacienteSeleccionado()
@@ -139,25 +135,59 @@ namespace GUI
             }
         }
 
-        bool validarEstado(bool verificarPendiente = true)
+        bool validarEstado(string Contexto)
         {
             Cita cita = citaSeleccionada();
 
-            if (verificarPendiente)
+            switch (cita.Estado)
             {
-                if (!vali.validarAtendida(cita.Estado))
-                {
-                    MessageBox.Show("Error - No es posible alterar una cita que ya ha sido atendida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                case "Solicitada":
+                    {
+                        if(Contexto == "Diagnosticar") { return validarSolicitada(cita.Estado); }
+                        else { return true; }
+                    }
+                case "Pendiente":
+                    {
+                        return validarAtendida(cita.Estado);
+                    }
+                case "Finalizada": 
+                    {
+                        return validarAtendida(cita.Estado);
+                    }
+                case "Cancelada":
+                    {
+                        return validarCancelada(cita.Estado);
+                    }
             }
-            else
+            return true;
+        }
+
+        bool validarSolicitada(string texto)
+        {
+            if (vali.validarAtendidaPaciente(texto))
             {
-                if (vali.validarAtendida(cita.Estado))
-                {
-                    MessageBox.Show("Error - No es posible realizar un diagnóstico si la cita no ha sido atendida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                MessageBox.Show("Error - No es posible realizar un diagnóstico si la cita no ha sido atendida.", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        bool validarAtendida(string texto)
+        {
+            if (!vali.validarAtendidaOrtodoncista(texto))
+            {
+                MessageBox.Show("Error - No es posible alterar una cita que ya ha finalizado", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        bool validarCancelada(string texto)
+        {
+            if (!vali.validarCancelada(texto))
+            {
+                MessageBox.Show("Error - No es posible alterar una cita que ha sido cancelada", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             return true;
         }
@@ -254,6 +284,7 @@ namespace GUI
             Cita cita = citaSeleccionada();
             Paciente paciente = pacienteSeleccionado();
             FrmRealizarDiagnostico F = new FrmRealizarDiagnostico(cita, paciente);
+            F.FormClosed += (s, args) => actualizar();
             F.Show();
         }
 
@@ -295,11 +326,6 @@ namespace GUI
         private void txtCedulaPaciente_Leave(object sender, EventArgs e) { eventoSalir(txtCedulaPaciente, "CEDULA DEL PACIENTE"); }
 
         private void txtCedulaPaciente_KeyPress(object sender, KeyPressEventArgs e) { if (!validarNumeros(e)) e.Handled = true; }
-
-        private void FrmGestionCita_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

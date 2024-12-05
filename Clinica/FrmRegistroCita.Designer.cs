@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LBTitulo = new System.Windows.Forms.Label();
             this.DGVCitas = new System.Windows.Forms.DataGridView();
             this.btnInformacion = new System.Windows.Forms.Button();
@@ -41,6 +41,7 @@
             this.CBEstado = new System.Windows.Forms.ComboBox();
             this.LBFiltro = new System.Windows.Forms.Label();
             this.CBFiltrarEstado = new System.Windows.Forms.CheckBox();
+            this.btnVerInfoOrtodoncista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -63,19 +64,19 @@
             this.DGVCitas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVCitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DGVCitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVCitas.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.DGVCitas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVCitas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DGVCitas.ColumnHeadersHeight = 30;
             this.DGVCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGVCitas.EnableHeadersVisualStyles = false;
@@ -83,20 +84,20 @@
             this.DGVCitas.Name = "DGVCitas";
             this.DGVCitas.ReadOnly = true;
             this.DGVCitas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVCitas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.DGVCitas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVCitas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.DGVCitas.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DGVCitas.Size = new System.Drawing.Size(709, 535);
             this.DGVCitas.TabIndex = 8;
             // 
@@ -108,9 +109,9 @@
             this.btnInformacion.FlatAppearance.BorderSize = 0;
             this.btnInformacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInformacion.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformacion.Location = new System.Drawing.Point(56, 616);
+            this.btnInformacion.Location = new System.Drawing.Point(23, 616);
             this.btnInformacion.Name = "btnInformacion";
-            this.btnInformacion.Size = new System.Drawing.Size(187, 50);
+            this.btnInformacion.Size = new System.Drawing.Size(169, 50);
             this.btnInformacion.TabIndex = 38;
             this.btnInformacion.Text = "Más información";
             this.btnInformacion.UseVisualStyleBackColor = false;
@@ -124,9 +125,9 @@
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(280, 616);
+            this.btnCancelar.Location = new System.Drawing.Point(373, 616);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(187, 50);
+            this.btnCancelar.Size = new System.Drawing.Size(169, 50);
             this.btnCancelar.TabIndex = 63;
             this.btnCancelar.Text = "Cancelar cita";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -140,9 +141,9 @@
             this.btnActualizarRazon.FlatAppearance.BorderSize = 0;
             this.btnActualizarRazon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizarRazon.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarRazon.Location = new System.Drawing.Point(504, 616);
+            this.btnActualizarRazon.Location = new System.Drawing.Point(548, 616);
             this.btnActualizarRazon.Name = "btnActualizarRazon";
-            this.btnActualizarRazon.Size = new System.Drawing.Size(187, 50);
+            this.btnActualizarRazon.Size = new System.Drawing.Size(169, 50);
             this.btnActualizarRazon.TabIndex = 64;
             this.btnActualizarRazon.Text = "Cambiar razon de cita";
             this.btnActualizarRazon.UseVisualStyleBackColor = false;
@@ -187,11 +188,13 @@
             "N/A",
             "Solicitada",
             "Pendiente",
-            "Finalizada"});
+            "Finalizada",
+            "Cancelada"});
             this.CBEstado.Location = new System.Drawing.Point(558, 34);
             this.CBEstado.Name = "CBEstado";
             this.CBEstado.Size = new System.Drawing.Size(121, 21);
             this.CBEstado.TabIndex = 66;
+            this.CBEstado.SelectedIndexChanged += new System.EventHandler(this.CBEstado_SelectedIndexChanged);
             // 
             // LBFiltro
             // 
@@ -216,12 +219,29 @@
             this.CBFiltrarEstado.UseVisualStyleBackColor = true;
             this.CBFiltrarEstado.CheckedChanged += new System.EventHandler(this.CBFiltrarEstado_CheckedChanged);
             // 
+            // btnVerInfoOrtodoncista
+            // 
+            this.btnVerInfoOrtodoncista.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnVerInfoOrtodoncista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVerInfoOrtodoncista.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerInfoOrtodoncista.FlatAppearance.BorderSize = 0;
+            this.btnVerInfoOrtodoncista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerInfoOrtodoncista.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerInfoOrtodoncista.Location = new System.Drawing.Point(198, 616);
+            this.btnVerInfoOrtodoncista.Name = "btnVerInfoOrtodoncista";
+            this.btnVerInfoOrtodoncista.Size = new System.Drawing.Size(169, 50);
+            this.btnVerInfoOrtodoncista.TabIndex = 81;
+            this.btnVerInfoOrtodoncista.Text = "Ver perfil del ortodoncista";
+            this.btnVerInfoOrtodoncista.UseVisualStyleBackColor = false;
+            this.btnVerInfoOrtodoncista.Click += new System.EventHandler(this.btnVerInfoOrtodoncista_Click);
+            // 
             // FrmRegistroCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(777, 699);
+            this.Controls.Add(this.btnVerInfoOrtodoncista);
             this.Controls.Add(this.CBFiltrarEstado);
             this.Controls.Add(this.LBFiltro);
             this.Controls.Add(this.CBEstado);
@@ -255,5 +275,6 @@
         private System.Windows.Forms.ComboBox CBEstado;
         private System.Windows.Forms.Label LBFiltro;
         private System.Windows.Forms.CheckBox CBFiltrarEstado;
+        private System.Windows.Forms.Button btnVerInfoOrtodoncista;
     }
 }

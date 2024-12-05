@@ -389,6 +389,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPerfil";
             this.Load += new System.EventHandler(this.FrmPerfil_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmPerfil_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.IconPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IconDudas)).EndInit();

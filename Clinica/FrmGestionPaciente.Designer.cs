@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnAntecedentes = new System.Windows.Forms.Button();
             this.LBTitulo = new System.Windows.Forms.Label();
             this.DGVPaciente = new System.Windows.Forms.DataGridView();
             this.btnInformacion = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.CBFiltrarPorPaciente = new System.Windows.Forms.CheckBox();
             this.txtCedulaPaciente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,7 +67,7 @@
             this.btnAntecedentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAntecedentes.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAntecedentes.ForeColor = System.Drawing.Color.Black;
-            this.btnAntecedentes.Location = new System.Drawing.Point(272, 626);
+            this.btnAntecedentes.Location = new System.Drawing.Point(396, 626);
             this.btnAntecedentes.Name = "btnAntecedentes";
             this.btnAntecedentes.Size = new System.Drawing.Size(196, 50);
             this.btnAntecedentes.TabIndex = 84;
@@ -95,19 +94,19 @@
             this.DGVPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVPaciente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DGVPaciente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVPaciente.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVPaciente.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.DGVPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVPaciente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPaciente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVPaciente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVPaciente.ColumnHeadersHeight = 30;
             this.DGVPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGVPaciente.EnableHeadersVisualStyles = false;
@@ -115,20 +114,20 @@
             this.DGVPaciente.Name = "DGVPaciente";
             this.DGVPaciente.ReadOnly = true;
             this.DGVPaciente.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPaciente.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.DGVPaciente.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVPaciente.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.DGVPaciente.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DGVPaciente.Size = new System.Drawing.Size(709, 535);
             this.DGVPaciente.TabIndex = 83;
             // 
@@ -141,30 +140,13 @@
             this.btnInformacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInformacion.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInformacion.ForeColor = System.Drawing.Color.Black;
-            this.btnInformacion.Location = new System.Drawing.Point(70, 626);
+            this.btnInformacion.Location = new System.Drawing.Point(194, 626);
             this.btnInformacion.Name = "btnInformacion";
             this.btnInformacion.Size = new System.Drawing.Size(196, 50);
             this.btnInformacion.TabIndex = 94;
             this.btnInformacion.Text = "Más información";
             this.btnInformacion.UseVisualStyleBackColor = false;
             this.btnInformacion.Click += new System.EventHandler(this.btnInformacion_Click);
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizar.Location = new System.Drawing.Point(474, 626);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(196, 50);
-            this.btnActualizar.TabIndex = 95;
-            this.btnActualizar.Text = "Actualizar registro";
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // CBFiltrarPorPaciente
             // 
@@ -188,6 +170,7 @@
             this.txtCedulaPaciente.Size = new System.Drawing.Size(147, 22);
             this.txtCedulaPaciente.TabIndex = 97;
             this.txtCedulaPaciente.Text = "CEDULA DEL PACIENTE";
+            this.txtCedulaPaciente.TextChanged += new System.EventHandler(this.txtCedulaPaciente_TextChanged);
             this.txtCedulaPaciente.Enter += new System.EventHandler(this.txtCedulaPaciente_Enter);
             this.txtCedulaPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedulaPaciente_KeyPress);
             this.txtCedulaPaciente.Leave += new System.EventHandler(this.txtCedulaPaciente_Leave);
@@ -228,7 +211,6 @@
             this.Controls.Add(this.CBFiltrarPorPaciente);
             this.Controls.Add(this.txtCedulaPaciente);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnInformacion);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnAntecedentes);
@@ -252,7 +234,6 @@
         private System.Windows.Forms.Label LBTitulo;
         private System.Windows.Forms.DataGridView DGVPaciente;
         private System.Windows.Forms.Button btnInformacion;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.CheckBox CBFiltrarPorPaciente;
         private System.Windows.Forms.TextBox txtCedulaPaciente;
         private System.Windows.Forms.Label label1;

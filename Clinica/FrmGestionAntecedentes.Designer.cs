@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnInformacion = new System.Windows.Forms.Button();
             this.CBFiltrarPorPaciente = new System.Windows.Forms.CheckBox();
             this.CBFiltrarFecha = new System.Windows.Forms.CheckBox();
@@ -42,7 +42,6 @@
             this.LBTitulo = new System.Windows.Forms.Label();
             this.DGVDiagnostico = new System.Windows.Forms.DataGridView();
             this.DTFiltroFecha = new System.Windows.Forms.DateTimePicker();
-            this.btnActualizarRegistro = new System.Windows.Forms.Button();
             this.btnAsignarTratamiento = new System.Windows.Forms.Button();
             this.btnTratamientosRelacion = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
@@ -73,7 +72,7 @@
             // 
             this.CBFiltrarPorPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CBFiltrarPorPaciente.AutoSize = true;
-            this.CBFiltrarPorPaciente.Location = new System.Drawing.Point(429, 38);
+            this.CBFiltrarPorPaciente.Location = new System.Drawing.Point(556, 38);
             this.CBFiltrarPorPaciente.Name = "CBFiltrarPorPaciente";
             this.CBFiltrarPorPaciente.Size = new System.Drawing.Size(15, 14);
             this.CBFiltrarPorPaciente.TabIndex = 93;
@@ -84,7 +83,7 @@
             // 
             this.CBFiltrarFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CBFiltrarFecha.AutoSize = true;
-            this.CBFiltrarFecha.Location = new System.Drawing.Point(235, 38);
+            this.CBFiltrarFecha.Location = new System.Drawing.Point(362, 38);
             this.CBFiltrarFecha.Name = "CBFiltrarFecha";
             this.CBFiltrarFecha.Size = new System.Drawing.Size(15, 14);
             this.CBFiltrarFecha.TabIndex = 92;
@@ -97,11 +96,12 @@
             this.txtCedulaPaciente.Enabled = false;
             this.txtCedulaPaciente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCedulaPaciente.ForeColor = System.Drawing.Color.DimGray;
-            this.txtCedulaPaciente.Location = new System.Drawing.Point(454, 48);
+            this.txtCedulaPaciente.Location = new System.Drawing.Point(581, 48);
             this.txtCedulaPaciente.Name = "txtCedulaPaciente";
             this.txtCedulaPaciente.Size = new System.Drawing.Size(147, 22);
             this.txtCedulaPaciente.TabIndex = 91;
             this.txtCedulaPaciente.Text = "CEDULA DEL PACIENTE";
+            this.txtCedulaPaciente.TextChanged += new System.EventHandler(this.txtCedulaPaciente_TextChanged);
             this.txtCedulaPaciente.Enter += new System.EventHandler(this.txtCedulaPaciente_Enter);
             this.txtCedulaPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedulaPaciente_KeyPress);
             this.txtCedulaPaciente.Leave += new System.EventHandler(this.txtCedulaPaciente_Leave);
@@ -113,7 +113,7 @@
             this.LBFiltrarPorPaciente.BackColor = System.Drawing.Color.Transparent;
             this.LBFiltrarPorPaciente.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBFiltrarPorPaciente.ForeColor = System.Drawing.Color.Black;
-            this.LBFiltrarPorPaciente.Location = new System.Drawing.Point(450, 23);
+            this.LBFiltrarPorPaciente.Location = new System.Drawing.Point(577, 23);
             this.LBFiltrarPorPaciente.Name = "LBFiltrarPorPaciente";
             this.LBFiltrarPorPaciente.Size = new System.Drawing.Size(151, 19);
             this.LBFiltrarPorPaciente.TabIndex = 90;
@@ -126,7 +126,7 @@
             this.LBFiltro.BackColor = System.Drawing.Color.Transparent;
             this.LBFiltro.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBFiltro.ForeColor = System.Drawing.Color.Black;
-            this.LBFiltro.Location = new System.Drawing.Point(256, 23);
+            this.LBFiltro.Location = new System.Drawing.Point(383, 23);
             this.LBFiltro.Name = "LBFiltro";
             this.LBFiltro.Size = new System.Drawing.Size(128, 19);
             this.LBFiltro.TabIndex = 89;
@@ -190,14 +190,14 @@
             this.DGVDiagnostico.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.DGVDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVDiagnostico.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVDiagnostico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVDiagnostico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DGVDiagnostico.ColumnHeadersHeight = 30;
             this.DGVDiagnostico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGVDiagnostico.EnableHeadersVisualStyles = false;
@@ -205,20 +205,20 @@
             this.DGVDiagnostico.Name = "DGVDiagnostico";
             this.DGVDiagnostico.ReadOnly = true;
             this.DGVDiagnostico.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVDiagnostico.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.DGVDiagnostico.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVDiagnostico.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.DGVDiagnostico.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DGVDiagnostico.Size = new System.Drawing.Size(709, 535);
             this.DGVDiagnostico.TabIndex = 83;
             // 
@@ -226,27 +226,11 @@
             // 
             this.DTFiltroFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DTFiltroFecha.Enabled = false;
-            this.DTFiltroFecha.Location = new System.Drawing.Point(260, 50);
+            this.DTFiltroFecha.Location = new System.Drawing.Point(387, 50);
             this.DTFiltroFecha.Name = "DTFiltroFecha";
             this.DTFiltroFecha.Size = new System.Drawing.Size(150, 20);
             this.DTFiltroFecha.TabIndex = 95;
-            // 
-            // btnActualizarRegistro
-            // 
-            this.btnActualizarRegistro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizarRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnActualizarRegistro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizarRegistro.FlatAppearance.BorderSize = 0;
-            this.btnActualizarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarRegistro.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarRegistro.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizarRegistro.Location = new System.Drawing.Point(607, 22);
-            this.btnActualizarRegistro.Name = "btnActualizarRegistro";
-            this.btnActualizarRegistro.Size = new System.Drawing.Size(123, 50);
-            this.btnActualizarRegistro.TabIndex = 96;
-            this.btnActualizarRegistro.Text = "Actualizar registro";
-            this.btnActualizarRegistro.UseVisualStyleBackColor = false;
-            this.btnActualizarRegistro.Click += new System.EventHandler(this.btnActualizarRegistro_Click);
+            this.DTFiltroFecha.ValueChanged += new System.EventHandler(this.DTFiltroFecha_ValueChanged);
             // 
             // btnAsignarTratamiento
             // 
@@ -317,7 +301,6 @@
             this.Controls.Add(this.IconDudas);
             this.Controls.Add(this.btnTratamientosRelacion);
             this.Controls.Add(this.btnAsignarTratamiento);
-            this.Controls.Add(this.btnActualizarRegistro);
             this.Controls.Add(this.DTFiltroFecha);
             this.Controls.Add(this.btnInformacion);
             this.Controls.Add(this.CBFiltrarPorPaciente);
@@ -358,7 +341,6 @@
         private System.Windows.Forms.Label LBTitulo;
         private System.Windows.Forms.DataGridView DGVDiagnostico;
         private System.Windows.Forms.DateTimePicker DTFiltroFecha;
-        private System.Windows.Forms.Button btnActualizarRegistro;
         private System.Windows.Forms.Button btnAsignarTratamiento;
         private System.Windows.Forms.Button btnTratamientosRelacion;
         private System.Windows.Forms.PictureBox IconDudas;

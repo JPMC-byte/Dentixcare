@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.Design;
 using System.Windows.Forms;
 
 namespace GUI
@@ -16,6 +17,7 @@ namespace GUI
     {
         ServicioCita servicioCita = new ServicioCita();
         ServicioConsultorio servisconsulto = new ServicioConsultorio();
+        ServicioOrtodoncista servicioOrtodoncista = new ServicioOrtodoncista();
         Validaciones vali = new Validaciones();
         Persona UsuarioActual;
         public FrmRegistroCita(Persona persona)
@@ -27,6 +29,7 @@ namespace GUI
         private void FrmRegistroCita_Load(object sender, EventArgs e)
         {
             cargarCitas();
+            CBEstado.SelectedIndex = 0;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -41,37 +44,37 @@ namespace GUI
 
         private void btnInformacion_Click(object sender, EventArgs e)
         {
-            if (!verificar())
-            {
-                return;
-            }
+            if (!verificar()) { return; }
             abrirInformacion();
+        }
+
+        private void btnVerInfoOrtodoncista_Click(object sender, EventArgs e)
+        {
+            if (!verificar() || !validarOrtodoncistaAsignado()) { return; }
+            abrirInfoOrtodoncista();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (!verificar() || !validarEstado())
-            {
-                return;
-            }
+            if (!verificar() || !validarEstado()) { return; }
             abrirActualizar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (!verificar() || !validarEstado())
-            {
-                return;
-            }
-            if (confirmar())
-            {
-                cancelarCita();
-            }
+            if (!verificar() || !validarEstado()) { return; }
+            if (confirmar()) { cancelarCita(); }
         }
 
         private void CBFiltrarEstado_CheckedChanged(object sender, EventArgs e)
         {
             accionarFiltroPorEstado();
+            actualizar();
+        }
+
+        private void CBEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizar();
         }
 
         private void cargarCitas(string estado = null)
@@ -91,6 +94,14 @@ namespace GUI
 
             Cita citaSeleccionada = servicioCita.obtenerPorCodigo(codigoCita);
             return citaSeleccionada;
+        }
+
+        public Ortodoncista ortodoncistaSeleccionado()
+        {
+            var codigoOrtodoncista = DGVCitas.SelectedRows[0].Cells["CodigoOrtodoncista"].Value.ToString();
+
+            Ortodoncista ortodoncistaSeleccionado = servicioOrtodoncista.obtenerPorCodigo(codigoOrtodoncista);
+            return ortodoncistaSeleccionado;
         }
 
         void abrirInformacion()
@@ -116,9 +127,51 @@ namespace GUI
         bool validarEstado()
         {
             Cita cita = citaSeleccionada();
-            if (!vali.validarAtendida(cita.Estado))
+
+            switch (cita.Estado)
             {
-                MessageBox.Show("Error - No es posible alterar una cita que ya ha sido atendida.");
+                case "Pendiente":
+                    {
+                        return validarAtendida(cita.Estado);
+                    }
+                case "Finalizada":
+                    {
+                        return validarAtendida(cita.Estado);
+                    }
+                case "Cancelada":
+                    {
+                        return validarCancelada(cita.Estado);
+                    }
+            }
+            return true;
+        }
+
+        bool validarAtendida(string texto)
+        {
+            if (!vali.validarAtendidaPaciente(texto))
+            {
+                MessageBox.Show("Error - No es posible alterar una cita que ya ha sido atendida.", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        bool validarCancelada(string texto)
+        {
+            if (!vali.validarCancelada(texto))
+            {
+                MessageBox.Show("Error - No es posible alterar una cita que ha sido cancelada", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        bool validarOrtodoncistaAsignado()
+        {
+            Ortodoncista ortodoncista = ortodoncistaSeleccionado();
+            if (ortodoncista == null)
+            {
+                MessageBox.Show("Error - Un ortodoncista aun no ha sido asignado a esta cita", "Acción no realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -144,7 +197,7 @@ namespace GUI
         void cancelarCita()
         {
             Cita cita = citaSeleccionada();
-            servicioCita.eliminar(cita);
+            servicioCita.actualizarEstado(cita, "Cancelada");
         }
 
         void actualizar()
@@ -168,6 +221,13 @@ namespace GUI
             {
                 CBEstado.Enabled = false;
             }
+        }
+
+        void abrirInfoOrtodoncista()
+        {
+            Ortodoncista ortodoncista = ortodoncistaSeleccionado();
+            FrmPerfil F = new FrmPerfil(ortodoncista);
+            F.Show();
         }
     }
 }

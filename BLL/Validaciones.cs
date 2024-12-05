@@ -40,17 +40,17 @@ namespace BLL
             return esValido;
         }
 
-        public bool EsTextoValido(string texto)
-        {
-            return texto.All(c => char.IsLetter(c) || char.IsWhiteSpace(c));
-        }
-
         public bool validarNumeros(KeyPressEventArgs e)
         {
             if (validarTeclasControl(e)) return true;
             string Patron = @"^[0-9]$";
             bool esValido = Regex.IsMatch(e.KeyChar.ToString(), Patron);
             return esValido;
+        }
+
+        public bool EsTextoValido(string texto)
+        {
+            return texto.All(c => char.IsLetter(c) || char.IsWhiteSpace(c));
         }
 
         public bool EsNumeroTelefonoValido(string numero)
@@ -162,7 +162,7 @@ namespace BLL
                 {
                     TimeSpan finCitaExistente = cita.Hora_Cita.Add(duracionCita);
 
-                    bool haySuperposicion = (Hora < finCitaExistente) && (finNuevaCita > cita.Hora_Cita);
+                    bool haySuperposicion = (Hora < finCitaExistente) && (finNuevaCita > cita.Hora_Cita) && validarCancelada(cita.Estado);
 
                     if (haySuperposicion)
                     {
@@ -184,41 +184,38 @@ namespace BLL
             consul = servicioConsultorio.cargarConsultorio("P101");
 
             bool horaNoDisponibilidad = (Hora < consul.Hora_Apertura) || (Hora > consul.Hora_Cierre);
-            if (horaNoDisponibilidad)
-            {
-                return false;
-            }
+            if (horaNoDisponibilidad) { return false; }
             return true;
         }
 
         public bool validarSegundosNombres(string Texto)
         {
-            if (Texto == "SEGUNDO NOMBRE")
-            {
-                return false;
-            }
-            if (Texto == "SEGUNDO APELLIDO")
-            {
-                return false;
-            }
+            if (Texto == "SEGUNDO NOMBRE") { return false; }
+            if (Texto == "SEGUNDO APELLIDO") { return false; }
             return true;
         }
 
-        public bool validarAtendida(string texto)
+        public bool validarAtendidaPaciente(string texto)
         {
-            if (texto == "Pendiente" || texto == "Finalizada")
-            {
-                return false;
-            }
+            if (texto == "Pendiente" || texto == "Finalizada") { return false; }
+            return true;
+        }
+
+        public bool validarAtendidaOrtodoncista(string texto)
+        {
+            if (texto == "Finalizada") { return false; }
+            return true;
+        }
+
+        public bool validarCancelada(string texto)
+        {
+            if (texto == "Cancelada") { return false; }
             return true;
         }
 
         public bool validarFiltroEstado(bool activo, string texto)
         {
-            if (!activo || texto == "N/A")
-            {
-                return false;
-            }
+            if (!activo || texto == "N/A") { return false; }
             return true;
         }
 
@@ -226,19 +223,13 @@ namespace BLL
         {
             Cita cita = servicioCita.obtenerPorCedula(texto);
             Paciente paciente = servicioPaciente.obtenerPorCodigo(texto);
-            if (!activo || texto == "CEDULA DEL PACIENTE" || cita == null || paciente == null)
-            {
-                return false;
-            }
+            if (!activo || texto == "CEDULA DEL PACIENTE" || cita == null || paciente == null) { return false; }
             return true;
         }
 
         public bool validarFiltroFecha(bool activo, DateTime fecha)
         {
-            if (!activo || fecha.Date > DateTime.Now.Date)
-            {
-                return false;
-            }
+            if (!activo || fecha.Date > DateTime.Now.Date) { return false; }
             return true;
         }
 
@@ -280,10 +271,7 @@ namespace BLL
 
         public bool validarMonto(double monto)
         {
-            if (monto <= 0)
-            {
-                return false;
-            }
+            if (monto <= 0) { return false; }
             return true;
         }
 
@@ -324,5 +312,12 @@ namespace BLL
 
             return sb.ToString().Normalize(NormalizationForm.FormC).Trim();
         }
+
+        public bool ValidarInforme(Dictionary<string, object> informes)
+        {
+            if (informes == null || informes.Count == 0) { return false; }
+            return true;
+        }
+
     }
 }

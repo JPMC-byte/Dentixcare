@@ -147,6 +147,36 @@
     <Compile Include="FrmInformacion.Designer.cs">
       <DependentUpon>FrmInformacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInformaCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformaCitas.Designer.cs">
+      <DependentUpon>FrmInformaCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInformeFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformeFacturas.Designer.cs">
+      <DependentUpon>FrmInformeFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInformes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformes.Designer.cs">
+      <DependentUpon>FrmInformes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInformesPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformesPagos.Designer.cs">
+      <DependentUpon>FrmInformesPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInformeUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformeUsuarios.Designer.cs">
+      <DependentUpon>FrmInformeUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInfoTratamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +322,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInformacion.resx">
       <DependentUpon>FrmInformacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformaCitas.resx">
+      <DependentUpon>FrmInformaCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformeFacturas.resx">
+      <DependentUpon>FrmInformeFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformes.resx">
+      <DependentUpon>FrmInformes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformesPagos.resx">
+      <DependentUpon>FrmInformesPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformeUsuarios.resx">
+      <DependentUpon>FrmInformeUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInfoTratamiento.resx">
       <DependentUpon>FrmInfoTratamiento.cs</DependentUpon>

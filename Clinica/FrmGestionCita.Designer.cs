@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LBFiltro = new System.Windows.Forms.Label();
             this.CBEstado = new System.Windows.Forms.ComboBox();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.btnDiagnostico = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnAtender = new System.Windows.Forms.Button();
@@ -76,28 +75,13 @@
             "N/A",
             "Solicitada",
             "Pendiente",
-            "Finalizada"});
+            "Finalizada",
+            "Cancelada"});
             this.CBEstado.Location = new System.Drawing.Point(310, 43);
             this.CBEstado.Name = "CBEstado";
             this.CBEstado.Size = new System.Drawing.Size(121, 24);
             this.CBEstado.TabIndex = 75;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizar.Location = new System.Drawing.Point(547, 624);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(162, 50);
-            this.btnActualizar.TabIndex = 74;
-            this.btnActualizar.Text = "Actualizar registro";
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.CBEstado.SelectedIndexChanged += new System.EventHandler(this.CBEstado_SelectedIndexChanged);
             // 
             // btnDiagnostico
             // 
@@ -108,9 +92,9 @@
             this.btnDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiagnostico.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiagnostico.ForeColor = System.Drawing.Color.Black;
-            this.btnDiagnostico.Location = new System.Drawing.Point(379, 624);
+            this.btnDiagnostico.Location = new System.Drawing.Point(490, 624);
             this.btnDiagnostico.Name = "btnDiagnostico";
-            this.btnDiagnostico.Size = new System.Drawing.Size(162, 50);
+            this.btnDiagnostico.Size = new System.Drawing.Size(213, 50);
             this.btnDiagnostico.TabIndex = 72;
             this.btnDiagnostico.Text = "Realizar diagnostico";
             this.btnDiagnostico.UseVisualStyleBackColor = false;
@@ -138,9 +122,9 @@
             this.btnAtender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAtender.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtender.ForeColor = System.Drawing.Color.Black;
-            this.btnAtender.Location = new System.Drawing.Point(211, 624);
+            this.btnAtender.Location = new System.Drawing.Point(271, 624);
             this.btnAtender.Name = "btnAtender";
-            this.btnAtender.Size = new System.Drawing.Size(162, 50);
+            this.btnAtender.Size = new System.Drawing.Size(213, 50);
             this.btnAtender.TabIndex = 70;
             this.btnAtender.Text = "Atender cita";
             this.btnAtender.UseVisualStyleBackColor = false;
@@ -165,19 +149,19 @@
             this.DGVCitas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVCitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DGVCitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVCitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVCitas.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.DGVCitas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVCitas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DGVCitas.ColumnHeadersHeight = 30;
             this.DGVCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DGVCitas.EnableHeadersVisualStyles = false;
@@ -185,20 +169,20 @@
             this.DGVCitas.Name = "DGVCitas";
             this.DGVCitas.ReadOnly = true;
             this.DGVCitas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVCitas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.DGVCitas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVCitas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.DGVCitas.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DGVCitas.Size = new System.Drawing.Size(709, 535);
             this.DGVCitas.TabIndex = 69;
             // 
@@ -226,6 +210,7 @@
             this.txtCedulaPaciente.Size = new System.Drawing.Size(147, 22);
             this.txtCedulaPaciente.TabIndex = 78;
             this.txtCedulaPaciente.Text = "CEDULA DEL PACIENTE";
+            this.txtCedulaPaciente.TextChanged += new System.EventHandler(this.txtCedulaPaciente_TextChanged);
             this.txtCedulaPaciente.Enter += new System.EventHandler(this.txtCedulaPaciente_Enter);
             this.txtCedulaPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedulaPaciente_KeyPress);
             this.txtCedulaPaciente.Leave += new System.EventHandler(this.txtCedulaPaciente_Leave);
@@ -261,9 +246,9 @@
             this.btnInformacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInformacion.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInformacion.ForeColor = System.Drawing.Color.Black;
-            this.btnInformacion.Location = new System.Drawing.Point(43, 624);
+            this.btnInformacion.Location = new System.Drawing.Point(52, 624);
             this.btnInformacion.Name = "btnInformacion";
-            this.btnInformacion.Size = new System.Drawing.Size(162, 50);
+            this.btnInformacion.Size = new System.Drawing.Size(213, 50);
             this.btnInformacion.TabIndex = 81;
             this.btnInformacion.Text = "Más información";
             this.btnInformacion.UseVisualStyleBackColor = false;
@@ -296,7 +281,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LBFiltro);
             this.Controls.Add(this.CBEstado);
-            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnDiagnostico);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnAtender);
@@ -318,7 +302,6 @@
 
         private System.Windows.Forms.Label LBFiltro;
         private System.Windows.Forms.ComboBox CBEstado;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnDiagnostico;
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.Button btnAtender;
