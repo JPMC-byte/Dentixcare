@@ -71,6 +71,8 @@ namespace BLL
                 "a71b5b1a7b1e0c1f13df5bf1643262a4",
                 "+14842578999"
             );
+            //Clave secreta con la cual PROBAR EL SERVICIO IA de OpenIA, debido a problemas de seguridad de OpenIA: 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 
+            //Clave necesaria para no dar error pero NO FUNCIONAL EN EL SISTEMA: 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
             _servicioIA = new ServicioIA("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");
             _botClient = new TelegramBotClient(token);
             _servicioPaciente = new ServicioPaciente();
@@ -263,7 +265,7 @@ namespace BLL
             {
                 if (!_validaciones.EsIdentificacionValida(mensaje))
                 {
-                    await SendMessage(chatId, "La cédula solo debe contener números y tener un mínimo de cinco dígitos. Por favor, ingrésala nuevamente.");
+                    await SendMessage(chatId, "La cédula solo debe contener números y tener un mínimo de cinco dígitos, además de no ser negativa. Por favor, ingrésala nuevamente.");
                     return;
                 }
 
@@ -354,12 +356,12 @@ namespace BLL
                 }
 
                 pacienteEnProceso.Telefono = mensaje;
-                await SendMessage(chatId, "Por favor, ingresa tu fecha de nacimiento en formato DD-MM-YYYY.");
+                await SendMessage(chatId, "Por favor, ingresa tu fecha de nacimiento en formato DD/MM/YYYY.");
                 return;
             }
             else if (pacienteEnProceso.Fecha_De_Nacimiento == default(DateTime))
             {
-                if (DateTime.TryParseExact(mensaje, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
+                if (DateTime.TryParseExact(mensaje, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaNacimiento))
                 {
                     int edad = DateTime.Now.Year - fechaNacimiento.Year;
                     if (fechaNacimiento > DateTime.Now.AddYears(-edad)) edad--;
@@ -376,7 +378,7 @@ namespace BLL
                 }
                 else
                 {
-                    await SendMessage(chatId, "Formato de fecha inválido. Por favor, ingresa la fecha en formato DD-MM-YYYY.");
+                    await SendMessage(chatId, "Formato de fecha inválido. Por favor, ingresa la fecha en formato DD/MM/YYYY.");
                     return;
                 }
                 return;
@@ -495,7 +497,7 @@ namespace BLL
             {
                 if (!_validaciones.EsIdentificacionValida(mensaje))
                 {
-                    await SendMessage(chatId, "La cédula ingresada no es válida. Asegúrate de que solo contenga números y tenga una longitud correcta.");
+                    await SendMessage(chatId, "La cédula ingresada no es válida. Asegúrate de que solo contenga números y tenga una longitud correcta, además de asegurarse de que no sea negativa.");
                     return;
                 }
 
@@ -574,7 +576,7 @@ namespace BLL
                     return;
                 }
 
-                if (DateTime.TryParseExact(mensaje, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+                if (DateTime.TryParseExact(mensaje, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
                 {
                     if (fecha.Date < DateTime.Now.Date)
                     {
@@ -588,7 +590,7 @@ namespace BLL
                 }
                 else
                 {
-                    await SendMessage(chatId, "Formato de fecha inválido. Por favor, ingresa la fecha en formato DD-MM-YYYY.");
+                    await SendMessage(chatId, "Formato de fecha inválido. Por favor, ingresa la fecha en formato DD/MM/YYYY.");
                     return;
                 }
                 return;
@@ -660,7 +662,7 @@ namespace BLL
                         citaEnProceso.CodigoOrtodoncista = ortodoncistaAleatorio.Cedula;
 
                         await SendMessage(chatId, $"Se asignó el ortodoncista {ortodoncistaAleatorio.PrimerNombre} {ortodoncistaAleatorio.PrimerApellido}.");
-                        await SendMessage(chatId, "¿Deseas activar recordatorios para esta cita? Responde con 'Sí' o 'No'.");
+                        await SendMessage(chatId, "¿Deseas activar recordatorios para esta cita? Responde con 'Si' o 'No'.");
                     }
                     else
                     {
@@ -727,7 +729,7 @@ namespace BLL
             string resultado = _servicioCita.guardar(citaEnProceso);
             if (resultado == "Cita registrada exitosamente")
             {
-                await SendMessage(chatId, $"Cita agendada exitosamente.\n\nDetalles de la cita:\n- Fecha: {citaEnProceso.Fecha_Cita:dd-MM-yyyy}\n- Hora: {citaEnProceso.Hora_Cita:hh\\:mm}\n- Motivo: {citaEnProceso.Razon_Cita}\n- Consultorio: {citaEnProceso.CodigoConsultorio}\n- Recordatorios: {(citaEnProceso.RecordatorioCita == true ? "Activados" : "Desactivados")}\n\n¡Te esperamos!");
+                await SendMessage(chatId, $"Cita agendada exitosamente.\n\nDetalles de la cita:\n- Fecha: {citaEnProceso.Fecha_Cita:dd/MM/yyyy}\n- Hora: {citaEnProceso.Hora_Cita:hh\\:mm}\n- Motivo: {citaEnProceso.Razon_Cita}\n- Consultorio: {citaEnProceso.CodigoConsultorio}\n- Recordatorios: {(citaEnProceso.RecordatorioCita == true ? "Activados" : "Desactivados")}\n\n¡Te esperamos!");
                 await MostrarMenuPrincipal(chatId);
             }
             else
@@ -755,8 +757,8 @@ namespace BLL
         {
             var tecladoFechas = new ReplyKeyboardMarkup(new[]
             {
-        new KeyboardButton[] { DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"), DateTime.Now.AddDays(2).ToString("dd-MM-yyyy") },
-        new KeyboardButton[] { DateTime.Now.AddDays(3).ToString("dd-MM-yyyy"), "Otra fecha" }
+        new KeyboardButton[] { DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"), DateTime.Now.AddDays(2).ToString("dd/MM/yyyy") },
+        new KeyboardButton[] { DateTime.Now.AddDays(3).ToString("dd/MM/yyyy"), "Otra fecha" }
             })
             {
                 ResizeKeyboard = true
@@ -831,7 +833,7 @@ namespace BLL
                     }
                 }
 
-                string detallesCita = $"📅 Fecha: {cita.Fecha_Cita:dd-MM-yyyy}\n" +
+                string detallesCita = $"📅 Fecha: {cita.Fecha_Cita:dd/MM/yyyy}\n" +
                                       $"🕒 Hora: {cita.Hora_Cita:hh\\:mm}\n" +
                                       $"💼 Motivo: {cita.Razon_Cita}\n" +
                                       $"📍 Estado: {cita.Estado}\n" +
@@ -851,7 +853,7 @@ namespace BLL
                     new KeyboardButton[] { "Modificar o Cancelar Citas", "Confirmar Recordatorios" },
                     new KeyboardButton[] { "Consultar Diagnóstico Reciente", "Gestionar Pagos" },
                     new KeyboardButton[] { "Emergencia de Ortodoncia", "Preguntas Frecuentes", "Soporte Técnico" },
-                    new KeyboardButton[] { "Volver al Menu Principal" }
+                    new KeyboardButton[] { "Volver al Menu de Registro/Inicio Sesion" }
                 })
             {
                 ResizeKeyboard = true
@@ -860,9 +862,9 @@ namespace BLL
             await SendMessage(chatId, "Por favor, selecciona una opción del menú:", menuPrincipal);
         }
 
-
         private async Task ProcesarComandoPrincipal(long chatId, string mensaje)
         {
+            mensaje = mensaje.Trim();
 
             if (esperandoSeleccionRecordatorios)
             {
@@ -873,10 +875,12 @@ namespace BLL
             switch (mensaje.ToLowerInvariant())
             {
                 case "agendar cita":
+                    esperandoSeleccionRecordatorios = false;
                     await AgendarCita(chatId);
                     break;
 
                 case "detalles de cita":
+                    esperandoSeleccionRecordatorios = false;
                     await VerDetallesCita(chatId);
                     break;
 
@@ -886,31 +890,36 @@ namespace BLL
                     break;
 
                 case "consultar diagnóstico reciente":
+                    esperandoSeleccionRecordatorios = false;
                     await ConsultarDiagnosticoReciente(chatId);
                     break;
 
                 case "gestionar pagos":
+                    esperandoSeleccionRecordatorios = false;
                     await GestionarPagos(chatId);
                     break;
 
                 case "preguntas frecuentes":
+                    esperandoSeleccionRecordatorios = false;
                     await PreguntasFrecuentes(chatId);
                     break;
 
                 case "soporte técnico":
+                    esperandoSeleccionRecordatorios = false;
                     await SoporteTecnico(chatId);
                     break;
 
-                case "volver al menu principal":
+                case "volver al menu de registro/inicio sesion":
+                    esperandoSeleccionRecordatorios = false;
                     await MostrarMenuBienvenida(chatId);
                     break;
 
                 default:
+                    esperandoSeleccionRecordatorios = false;
                     await ProcesarGestionPagos(chatId, mensaje);
                     break;
             }
         }
-
 
         private async Task GestionarCitas(long chatId, string mensaje = null)
         {
@@ -1004,7 +1013,7 @@ namespace BLL
                 }
                 else if (mensaje == "Modificar Fecha")
                 {
-                    await SendMessage(chatId, "Por favor, ingresa la nueva fecha para la cita en formato DD-MM-YYYY:");
+                    await SendMessage(chatId, "Por favor, ingresa la nueva fecha para la cita en formato DD/MM/YYYY:");
                     enEsperaNuevaFecha = true;
                     await MostrarMenuFechas(chatId);
                 }
@@ -1061,7 +1070,7 @@ namespace BLL
                 }
                 else if (enEsperaNuevaFecha)
                 {
-                    if (DateTime.TryParseExact(mensaje, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime nuevaFecha))
+                    if (DateTime.TryParseExact(mensaje, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime nuevaFecha))
                     {
                         var cita = _servicioCita.obtenerPorCodigo(citaSeleccionada);
                         if (cita != null)
@@ -1423,6 +1432,7 @@ namespace BLL
             await SendMessage(chatId, $"Por favor, ingresa el número de la tarjeta de {tipoTarjetaEnProceso} (16 dígitos).");
         }
 
+        //Este es un número de tarjeta ejemplo valido: 5288928163769320
         private async Task ProcesarDatosTarjeta(long chatId, string mensaje)
         {
             if (esperandoDatosTarjeta)
@@ -1549,7 +1559,7 @@ namespace BLL
             {
                 _servicioFactura.actualizarEstado(facturaEnProceso, EstadosFactura.Pagado);
                 await SendMessage(chatId, $"✅ Pago registrado exitosamente.\n\nFactura {facturaEnProceso.ID_Factura} ahora está completamente pagada.");
-                
+
             }
             else
             {
@@ -1656,7 +1666,7 @@ namespace BLL
             {
                 _servicioFactura.actualizarEstado(facturaActualizada, EstadosFactura.Pagado);
                 await SendMessage(chatId, $"✅ Pago a través de PSE registrado exitosamente.\n\nFactura {facturaActualizada.ID_Factura} ahora está completamente pagada.");
-                
+
             }
             else
             {
@@ -1922,11 +1932,14 @@ namespace BLL
                 ResizeKeyboard = true
             };
 
-            await SendMessage(chatId, $"¿Cuántos recordatorios deseas configurar antes de la cita del {cita.Fecha_Cita:dd-MM-yyyy}? Selecciona una opción del menú o elige 'Cancelar' para volver.", tecladoCantidad);
+            await SendMessage(chatId, $"¿Cuántos recordatorios deseas configurar antes de la cita del {cita.Fecha_Cita:dd/MM/yyyy}? Selecciona una opción del menú o elige 'Cancelar' para volver.", tecladoCantidad);
         }
 
+        //Debido a problemas con la facturación con Twilio no es posible (a menos que se haga un pago considerable) el envio de sms a cualquier numero de telefono, esta limitado a mi número de telefono: 3216100436
         public async Task ProcesarCantidadRecordatorios(long chatId, string mensaje)
         {
+            mensaje = mensaje.Trim();
+
             if (mensaje.Equals("Cancelar", StringComparison.OrdinalIgnoreCase))
             {
                 await SendMessage(chatId, "La configuración de recordatorios ha sido cancelada. Volviendo al menú principal...");
@@ -1940,12 +1953,20 @@ namespace BLL
                 return;
             }
 
+            if (string.IsNullOrEmpty(cedulaPacienteIniciada))
+            {
+                await SendMessage(chatId, "No se pudo procesar tu solicitud. Por favor, inicia sesión de nuevo.");
+                return;
+            }
+
             var citasPendientes = _servicioCita.cargarPorFiltros("Solicitada", "Pendiente", cedulaPacienteIniciada)
                                                .OrderBy(c => c.Fecha_Cita)
                                                .ToList();
 
             if (citasPendientes == null || citasPendientes.Count == 0)
             {
+                esperandoSeleccionRecordatorios = false;
+
                 await SendMessage(chatId, "No tienes citas pendientes.");
                 return;
             }
@@ -1961,7 +1982,7 @@ namespace BLL
             for (int i = 1; i <= numeroRecordatorios; i++)
             {
                 string mensajeRecordatorio = $"Hola {paciente.PrimerNombre}, este es el recordatorio {i} de {numeroRecordatorios} para tu cita:" +
-                                             $"\n📅 Fecha: {citaProxima.Fecha_Cita:dd-MM-yyyy}" +
+                                             $"\n📅 Fecha: {citaProxima.Fecha_Cita:dd/MM/yyyy}" +
                                              $"\n🕒 Hora: {citaProxima.Hora_Cita:hh\\:mm}" +
                                              $"\n💼 Motivo: {citaProxima.Razon_Cita}." +
                                              "\n¡Te esperamos!\n" +
@@ -1969,16 +1990,16 @@ namespace BLL
                 try
                 {
                     _servicioTwilio.enviarSMS(paciente.Telefono, mensajeRecordatorio);
-                    await SendMessage(chatId, $"✅ Recordatorio {i}/{numeroRecordatorios} enviado para la cita del {citaProxima.Fecha_Cita:dd-MM-yyyy}.");
-                    await MostrarMenuPrincipal(chatId);
+                    await SendMessage(chatId, $"✅ Recordatorio {i}/{numeroRecordatorios} enviado para la cita del {citaProxima.Fecha_Cita:dd/MM/yyyy}.");
                 }
                 catch (Exception ex)
                 {
                     await SendMessage(chatId, $"⚠️ Error al enviar el recordatorio {i}/{numeroRecordatorios}: {ex.Message}");
-                    await MostrarMenuPrincipal(chatId);
                 }
             }
+
             esperandoSeleccionRecordatorios = false;
+            await MostrarMenuPrincipal(chatId);
         }
 
         private async Task EnviarRecordatorios(long chatId, string mensaje)
@@ -1995,6 +2016,7 @@ namespace BLL
 
             if (citasPendientes == null || citasPendientes.Count == 0)
             {
+                esperandoSeleccionRecordatorios = false;
                 await SendMessage(chatId, "No tienes citas pendientes.");
                 return;
             }
@@ -2002,7 +2024,8 @@ namespace BLL
             var citaProxima = citasPendientes.First();
             if (citaProxima.RecordatorioCita == false)
             {
-                await SendMessage(chatId, $"Los recordatorios para la cita del {citaProxima.Fecha_Cita:dd-MM-yyyy} están desactivados.");
+                esperandoSeleccionRecordatorios = false;
+                await SendMessage(chatId, $"Los recordatorios para la cita del {citaProxima.Fecha_Cita:dd/MM/yyyy} están desactivados.");
                 return;
             }
 
